@@ -10,7 +10,6 @@ function calculateTriangleArea(){
     const height = parseFloat(heightValueText);
 
     const area = 0.5 * base * height;
-    console.log(area);
 
     // show triangle area
     const areaSpan = document.getElementById('triangle-area');
@@ -36,4 +35,38 @@ function calculateRectangleArea(){
     const rectangleAreaSpan = document.getElementById('rectangle-area');
     rectangleAreaSpan.innerText = area;
     
+}
+
+// resusable function -- reduce duplicate code
+
+function calculateParallelogramArea(){
+    const base = getInputValue('parallelogram-base');
+    const height = getInputValue('parallelogram-height');
+    const area = base * height;
+    setElementInnerText('parallelogram-area', area);
+
+}
+
+function calculateEllipseArea(){
+    const majorRadius = getInputValue('ellipse-major-radius')
+    const minorRadius = getInputValue('ellipse-minor-radius')
+    const area = 3.1416 * majorRadius * minorRadius;
+    setElementInnerText('ellipse-area', area);
+}
+
+
+
+
+// resuable get input value field in number
+function getInputValue(fieldId){
+    const inputField = document.getElementById(fieldId);
+    const inputFieldText = inputField.value;
+    const value = parseFloat(inputFieldText);
+    return value;
+}
+
+// resuable set span, p, div innerText
+function setElementInnerText(elementId, area){
+    const element = document.getElementById(elementId);
+    element.innerText = area;
 }
